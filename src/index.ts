@@ -1,6 +1,7 @@
 import { generateTechMilestone } from "./ai/generate";
 import { getFormattedDate } from "./utils/date";
 import { loadEnv } from "./config/environment";
+import { saveMilestone } from "./db/save";
 
 loadEnv();
 
@@ -10,6 +11,7 @@ const prompt = `Genera una efeméride corta y relevante en español sobre progra
 (async () => {
   try {
     const { text, model } = await generateTechMilestone(prompt);
+    await saveMilestone(text, model);
   } catch (err) {
     console.error("Failed to generate tech milestone", err);
     process.exit(1);
