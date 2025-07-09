@@ -11,7 +11,10 @@ const prompt = `Genera una efeméride corta y relevante en español sobre progra
 (async () => {
   try {
     const { text, model } = await generateTechMilestone(prompt);
+    console.log("Tech milestone generated\n", text);
+
     await saveMilestone(text, model);
+    console.log("Tech milestone saved successfully");
   } catch (err) {
     console.error("Failed to generate tech milestone", err);
     process.exit(1);
