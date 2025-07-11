@@ -1,9 +1,9 @@
-name: Run Byte History Worker
+name: Worker Run
 
 on:
   schedule:
-    - cron: "0 3 * * *" # Runs daily at 00:00 Argentina time (UTC-3)
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+    - cron: "0 3 * * *"
+  workflow_dispatch:
 
 jobs:
   run-script:
