@@ -1,0 +1,32 @@
+name: Run Byte History Worker
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # Runs daily at 00:00 Argentina time (UTC-3)
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        uses: npm ci
+
+      - name: Build TypeScript project
+        run: npm run build
+
+      - name: Run worker script
+        run: npm run start
+        env:
+          NODE_ENV: production
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY }}
