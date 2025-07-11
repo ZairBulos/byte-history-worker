@@ -1,6 +1,7 @@
 {
   "name": "byte-history-worker",
   "version": "1.0.0",
+  "description": "Worker service that generates daily programming and technology milestones using AI and saves them to PostgreSQL.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
@@ -8,10 +9,18 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "ai",
+    "worker",
+    "milestone",
+    "byte-history"
+  ],
+  "author": "Zair Bulos <buloszair@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZairBulos/byte-history-worker"
+  },
   "devDependencies": {
     "@types/luxon": "^3.6.2",
     "@types/node": "^24.0.10",
