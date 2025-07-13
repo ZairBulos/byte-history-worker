@@ -3,4 +3,5 @@ import environment from "../config/environment";
 
 export const pool = new Pool({
   connectionString: environment.DATABASE_URL,
+  max: 1,
 });
